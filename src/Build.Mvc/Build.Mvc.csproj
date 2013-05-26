@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3BC8650D-9D2D-4CC4-8BFD-E7807E426B3B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Build.Mvc</RootNamespace>
+    <AssemblyName>Build.Mvc4</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>build.mvc.pfx</AssemblyOriginatorKeyFile>
+    <SccProjectName>%24/buildmvc/Build.Mvc</SccProjectName>
+    <SccLocalPath>.</SccLocalPath>
+    <SccAuxPath>https://tfs.codeplex.com/tfs/tfs15</SccAuxPath>
+    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(SolutionDir)/SolutionInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="-\JetBrains\Annotations\AspMvcAnnotations.cs" />
+    <Compile Include="Extensions\GrammerExtensions.cs" />
+    <Compile Include="Helpers\BuildHelpers.cs" />
+    <Compile Include="Helpers\SurroundWithTemplateHelper.cs" />
+    <Compile Include="Helpers\TextBoxBuilderHelper.cs" />
+    <Compile Include="HtmlWriter.cs" />
+    <Compile Include="Html\Constants\AriaAttribute.cs" />
+    <Compile Include="Extensions\ExtensionsForEnum.cs" />
+    <Compile Include="Html\Constants\NgBinding.cs" />
+    <Compile Include="Html\Extensions\BuilderExtensions.cs" />
+    <Compile Include="Html\Extensions\ExtensionsForIContentEditableAttributeBuilder.cs" />
+    <Compile Include="Html\Extensions\DataBindExtensions.cs" />
+    <Compile Include="Extensions\HtmlStringExtensions.cs" />
+    <Compile Include="Html\Extensions\ExtensionsForIListSelectListItem.cs" />
+    <Compile Include="Html\Extensions\ExtensionsForIValidationMessageBuilder.cs" />
+    <Compile Include="Html\Extensions\ExtensionsForIValidationSummaryBuilder.cs" />
+    <Compile Include="Html\Extensions\NgExtensions.cs" />
+    <Compile Include="Interfaces\IBtnBuilder.cs" />
+    <Compile Include="Interfaces\ISpellCheckBuilder.cs" />
+    <Compile Include="Interfaces\IMultipleAttributeBuilder.cs" />
+    <Compile Include="Interfaces\IContentEditableAttributeBuilder.cs" />
+    <Compile Include="Interfaces\IAutocompleteAttributeBuilder.cs" />
+    <Compile Include="Html\Extensions\ExtensionsForIMultipleAttributeBuilder.cs" />
+    <Compile Include="Html\Extensions\ExtensionsForIHtmlTagBuilder.cs" />
+    <Compile Include="HtmlHelperContext.cs" />
+    <Compile Include="HtmlHelperContextExtensions.cs" />
+    <Compile Include="Helpers\ExtensionsForHtmlHelper.cs" />
+    <Compile Include="Html\ButtonBuilder.cs" />
+    <Compile Include="Html\Extensions\ButtonExtensions.cs" />
+    <Compile Include="Html\Extensions\FormExtensions.cs" />
+    <Compile Include="Html\Extensions\ExtensionsForIAutocompleteAttributeBuilder.cs" />
+    <Compile Include="Html\HtmlTagBuilder.cs" />
+    <Compile Include="Html\Extensions\HtmlTagBuilderExtensions.cs" />
+    <Compile Include="Interfaces\IButtonBuilder.cs" />
+    <Compile Include="Html\Extensions\ButtonBuilderExtensions.cs" />
+    <Compile Include="Interfaces\IFileInputBuilder.cs" />
+    <Compile Include="Interfaces\IHrefBuilder.cs" />
+    <Compile Include="Html\Extensions\HrefBuilderExtensions.cs" />
+    <Compile Include="Interfaces\IHtmlTagBuilder.cs" />
+    <Compile Include="Interfaces\ILinkTargetBuilder.cs" />
+    <Compile Include="Interfaces\IUIStateBuilder.cs" />
+    <Compile Include="Html\Extensions\ExtensionsForIUIStateBuilder.cs" />
+    <Compile Include="Html\MvcFormBuilder.cs" />
+    <Compile Include="Interfaces\IExpressionBuilder.cs" />
+    <Compile Include="Extensions\ExpressionBuilderExtensions.cs" />
+    <Compile Include="Interfaces\IMvcFormBuilder.cs" />
+    <Compile Include="Html\Extensions\ExtensionsForIMvcFormBuilder.cs" />
+    <Compile Include="Html\Extensions\LabelBuilderExtensions.cs" />
+    <Compile Include="Interfaces\ILabelBuilder.cs" />
+    <Compile Include="Interfaces\IValidationBuilder.cs" />
+    <Compile Include="Html\Extensions\ExtensionsForIValidationBuilder.cs" />
+    <Compile Include="Interfaces\IValidationMessageBuilder.cs" />
+    <Compile Include="Interfaces\IValidationSummaryBuilder.cs" />
+    <Compile Include="Html\LabelBuilder.cs" />
+    <Compile Include="Html\Extensions\LabelExtensions.cs" />
+    <Compile Include="Html\Extensions\ValidationExtensions.cs" />
+    <Compile Include="Html\ValidationMessageBuilder.cs" />
+    <Compile Include="Html\ValidationSummaryBuilder.cs" />
+    <Compile Include="Interfaces\ICanHasJQueryIcon.cs" />
+    <Compile Include="Interfaces\IHtmlAttributes.cs" />
+    <Compile Include="Interfaces\IHtmlHelperContext.cs" />
+    <Compile Include="Html\Constants\AutocompleteMode.cs" />
+    <Compile Include="Html\Constants\ContentEditableOption.cs" />
+    <Compile Include="Html\Constants\DraggableMode.cs" />
+    <Compile Include="Html\Constants\FormEncType.cs" />
+    <Compile Include="Html\Constants\FormMethod.cs" />
+    <Compile Include="Html\Constants\IconName.cs" />
+    <Compile Include="Html\Constants\IconPosition.cs" />
+    <Compile Include="Html\Constants\InputType.cs" />
+    <Compile Include="Html\Constants\SpellcheckMode.cs" />
+    <Compile Include="Html\Constants\UIStates.cs" />
+    <Compile Include="Html\Constants\UrlTarget.cs" />
+    <Compile Include="Html\Constants\VCardName.cs" />
+    <Compile Include="Html\Extensions\AriaExtensions.cs" />
+    <Compile Include="Html\Extensions\ExtensionsForIHtmlAttributes.cs" />
+    <Compile Include="Html\Extensions\ClassNameExtensions.cs" />
+    <Compile Include="Html\Extensions\CssExtensions.cs" />
+    <Compile Include="Html\Extensions\DataExtensions.cs" />
+    <Compile Include="Html\Extensions\ExtensionsForIFormInputBuilder.cs" />
+    <Compile Include="Extensions\GenericDictionaryExtensions.cs" />
+    <Compile Include="Html\Extensions\ExtensionsForIHtmlBuilderState.cs" />
+    <Compile Include="Extensions\PropExtensions.cs" />
+    <Compile Include="Extensions\TypeExtensions.cs" />
+    <Compile Include="FormInputBuilder.cs" />
+    <Compile Include="HtmlBuilder.cs" />
+    <Compile Include="HtmlBuilderState.cs" />
+    <Compile Include="Html\CheckBoxBuilder.cs" />
+    <Compile Include="Html\DropDownListBuilder.cs" />
+    <Compile Include="Html\EditorBuilder.cs" />
+    <Compile Include="Html\Extensions\EditorExtensions.cs" />
+    <Compile Include="Html\HiddenBuilder.cs" />
+    <Compile Include="Interfaces\ICheckableFormInputBuilder.cs" />
+    <Compile Include="Html\Extensions\CheckableFormInputBuilderExtensions.cs" />
+    <Compile Include="Interfaces\ICheckBoxBuilder.cs" />
+    <Compile Include="Interfaces\IEditorBuilder.cs" />
+    <Compile Include="Html\Extensions\EditorBuilderExtensions.cs" />
+    <Compile Include="Interfaces\IEditorForModelBuilder.cs" />
+    <Compile Include="Html\Extensions\ExtensionsForIEditorForModelBuilder.cs" />
+    <Compile Include="Interfaces\IHiddenBuilder.cs" />
+    <Compile Include="Interfaces\INavigationBuilder.cs" />
+    <Compile Include="Html\Extensions\ExtensionsForIRouteBuilder.cs" />
+    <Compile Include="Html\Extensions\InputExtensions.cs" />
+    <Compile Include="Interfaces\IRadioButtonBuilder.cs" />
+    <Compile Include="Interfaces\IRouteBuilder.cs" />
+    <Compile Include="Html\LinkBuilder.cs" />
+    <Compile Include="Html\Extensions\LinkExtensions.cs" />
+    <Compile Include="Html\RadioButtonBuilder.cs" />
+    <Compile Include="Html\Extensions\SelectExtensions.cs" />
+    <Compile Include="Interfaces\ISelectListBuilder.cs" />
+    <Compile Include="Html\Extensions\ExtensionsForISelectListBuilder.cs" />
+    <Compile Include="Html\Extensions\TextAreaExtensions.cs" />
+    <Compile Include="Interfaces\IFormInputBuilder.cs" />
+    <Compile Include="Interfaces\IHtmlBuilder.cs" />
+    <Compile Include="Interfaces\IHtmlBuilderState.cs" />
+    <Compile Include="Interfaces\IHtmlHelper.cs" />
+    <Compile Include="Interfaces\ITextBoxBuilder.cs" />
+    <Compile Include="Html\Extensions\TextBoxBuilderExtensions.cs" />
+    <Compile Include="Interfaces\IInstanceData.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Html\TextBoxBuilder.cs" />
+    <Compile Include="Html\Extensions\ExtensionsForISpellCheckBuilder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="build.mvc.pfx" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="build.mvc.png" />
+    <Content Include="License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="CopyOutputToPublishFolder" AfterTargets="build">
+    <PropertyGroup>
+      <publishFolder>$(SolutionDir)publish/Mvc4/</publishFolder>
+    </PropertyGroup>
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(publishFolder)lib/" />
+  </Target>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+</Project>
