@@ -10,6 +10,6 @@
 
 		public const string GlyphRight = "__glyphRight";
 
-		public const string IconTemplate = "<i class=\"glyphicon {0}\"></i>";
+		public const string IconTemplate = "<span class=\"glyphicon {0}\"></span>";
 	}
 }

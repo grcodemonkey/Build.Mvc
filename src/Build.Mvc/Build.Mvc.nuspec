@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <version>$version$</version>
+    <id>Build.Mvc5</id>
+    <title>Build.Mvc for MVC5</title>
+    <authors>grcodemonkey</authors>
+    <owners>Jeremy Bell</owners>
+    <projectUrl>http://buildmvc.codeplex.com</projectUrl>
+    <iconUrl>http://51ff69dfe5da18d9a132-67828cb861dee3bbe85a23f784ced1c1.r49.cf2.rackcdn.com/build.mvc-icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Build.Mvc is a HtmlHelper extension library that turns the standard ASP .NET MVC 5.0 HtmlHelper methods into jQuery-style chainable methods that allow you to expressively add markup and style to your MVC application.</description>
+    <releaseNotes>Now with Twitter Bootstrap extras</releaseNotes>
+    <language>en-US</language>
+    <tags>MVC,HtmlHelper,jQuery,.Net4,Extension</tags>
+  </metadata>
+</package>

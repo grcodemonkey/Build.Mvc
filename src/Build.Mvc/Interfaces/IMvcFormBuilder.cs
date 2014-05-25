@@ -13,23 +13,15 @@
 // It is pitch black. You are likely to be eaten by a grue.
 // 
 
+using System.Web.Mvc.Html;
+using Build.Mvc.Html;
+
 namespace Build.Mvc
 {
-    using System.Web.Mvc.Html;
-
-    using Build.Mvc.Html;
-
     /// <summary>
-    /// 
     /// </summary>
     public interface IMvcFormBuilder : ILinkTargetBuilder, IRouteBuilder, IAutocompleteAttributeBuilder, IHtmlBuilder
     {
-        /// <summary>
-        /// Starts the form tag in the same way that the standard Html.BeginForm() method works.
-        /// </summary>
-        /// <returns></returns>
-        MvcForm Begin();
-
         /// <summary>
         /// Gets or sets the form method.
         /// </summary>
@@ -37,5 +29,12 @@ namespace Build.Mvc
         /// The form method.
         /// </value>
         System.Web.Mvc.FormMethod FormMethod { get; set; }
+
+        /// <summary>
+        /// Starts the form tag in the same way that the standard Html.BeginForm() method works.
+        /// </summary>
+        /// <paramref name="style"> FormRenderStyle.Inline adds css class "form-inline" and FormRenderStyle.Horizontal adds css class "form-horizontal" </paramref>
+        /// <returns> </returns>
+        MvcForm Begin(FormRenderStyle style = FormRenderStyle.Default);
     }
 }

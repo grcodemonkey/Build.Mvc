@@ -1,4 +1,6 @@
 ﻿namespace Build.Mvc
 {
-    public interface ICanHasJQueryIcon : IHtmlBuilderState {}
+    public interface ICanHasJQueryIcon : IHtmlBuilderState
+    {
+    }
 }

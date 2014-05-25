@@ -13,12 +13,11 @@
 // It is pitch black. You are likely to be eaten by a grue.
 // 
 
+using System.Web.Mvc;
+
 namespace Build.Mvc
 {
-    using System.Web.Mvc;
-
     /// <summary>
-    /// 
     /// </summary>
     public interface IHtmlTagBuilder : IHtmlBuilder, IContentEditableAttributeBuilder, IHrefBuilder
     {

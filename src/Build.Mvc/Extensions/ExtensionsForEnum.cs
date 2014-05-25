@@ -78,27 +78,6 @@ namespace Build.Mvc
 		///     Gets the string value for the specified
 		/// </summary>
 		/// <param name="value">The value.</param>
-		public static string ConvertToString(this FormMethod value)
-		{
-			switch (value)
-			{
-				case FormMethod.Post:
-					return "POST";
-				case FormMethod.Get:
-					return "GET";
-				case FormMethod.Put:
-					return "PUT";
-				case FormMethod.Delete:
-					return "DELETE";
-				default:
-					return "";
-			}
-		}
-
-		/// <summary>
-		///     Gets the string value for the specified
-		/// </summary>
-		/// <param name="value">The value.</param>
 		public static string ConvertToString(this SpellcheckMode value)
 		{
 			switch (value)

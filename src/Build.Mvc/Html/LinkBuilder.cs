@@ -13,29 +13,18 @@
 // It is pitch black. You are likely to be eaten by a grue.
 // 
 
+using System.Threading;
+using System.Web.Mvc;
+using System.Web.Mvc.Html;
+using System.Web.Routing;
+
 namespace Build.Mvc.Html
 {
-    using System.Threading;
-    using System.Web.Mvc;
-    using System.Web.Mvc.Html;
-    using System.Web.Routing;
-
     /// <summary>
     /// </summary>
     public class LinkBuilder : HtmlBuilder, INavigationBuilder
     {
-        private HtmlHelper _html;
-
         private RouteValueDictionary _routeValues;
-
-        /// <summary>
-        /// Gets or sets the HtmlBuilder
-        /// </summary>
-        public virtual HtmlHelper Html
-        {
-            get { return _html; }
-            set { _html = HtmlHelperContext.MergeHelperContext(value, this); }
-        }
 
         /// <summary>
         /// Gets or sets the link text.
@@ -44,6 +33,11 @@ namespace Build.Mvc.Html
         /// The link text.
         /// </value>
         public virtual string LinkText { get; set; }
+
+        /// <summary>
+        /// Gets or sets the HtmlBuilder
+        /// </summary>
+        public virtual HtmlHelper Html { get; set; }
 
         /// <summary>
         /// Gets or sets the route values.
@@ -61,19 +55,19 @@ namespace Build.Mvc.Html
         {
             return BuildLink().ToHtmlStringSafe();
         }
-        
+
         protected virtual MvcHtmlString BuildLink()
         {
             string routeName = this.RouteName();
-            if ( !string.IsNullOrEmpty(routeName) )
+            if (!string.IsNullOrEmpty(routeName))
             {
-                if ( RouteValues.Count == 0 )
+                if (RouteValues.Count == 0)
                 {
                     return Html.RouteLink(LinkText, routeName, HtmlAttributes);
                 }
                 return Html.RouteLink(LinkText, routeName, RouteValues, HtmlAttributes);
             }
-            if ( RouteValues.Count == 0 )
+            if (RouteValues.Count == 0)
             {
                 return Html.RouteLink(LinkText, null, HtmlAttributes);
             }

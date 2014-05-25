@@ -12,10 +12,10 @@
 // 
 // It is pitch black. You are likely to be eaten by a grue.
 // 
+
 namespace Build.Mvc
 {
     /// <summary>
-    /// 
     /// </summary>
     public interface IHrefBuilder : IHtmlBuilderState, IHtmlHelper
     {
