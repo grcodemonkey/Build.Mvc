@@ -12,13 +12,13 @@
 // 
 // It is pitch black. You are likely to be eaten by a grue.
 // 
+
 using System.Web;
 using System.Web.Mvc;
 
 namespace Build.Mvc
 {
     /// <summary>
-    /// 
     /// </summary>
     public static class HtmlStringExtensions
     {
@@ -27,12 +27,13 @@ namespace Build.Mvc
             return ToHtmlStringSafe(htmlString, MvcHtmlString.Empty);
         }
 
-        public static string ToHtmlStringSafe(this IHtmlString htmlString, IHtmlString defaultValue)
+        public static string ToHtmlStringSafe(this IHtmlString htmlString,
+            IHtmlString defaultValue)
         {
             return (htmlString ?? defaultValue).ToHtmlString();
         }
 
-        internal static MvcHtmlString ToMvcHtmlString(this TagBuilder tagBuilder, TagRenderMode renderMode = TagRenderMode.Normal)
+        public static MvcHtmlString ToMvcHtmlString(this TagBuilder tagBuilder, TagRenderMode renderMode)
         {
             return new MvcHtmlString(tagBuilder.ToString(renderMode));
         }

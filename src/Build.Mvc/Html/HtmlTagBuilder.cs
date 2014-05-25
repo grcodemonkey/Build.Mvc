@@ -17,18 +17,16 @@ using System.Web.Mvc;
 namespace Build.Mvc.Html
 {
     /// <summary>
-    /// 
+    /// A generic html tag builder that wraps Build.Mvc behaviors around the standard Microsoft TagBuilder class.
     /// </summary>
     public class HtmlTagBuilder : HtmlBuilder, IHtmlTagBuilder
     {
-        private HtmlHelper _html;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="HtmlTagBuilder" /> class.
         /// </summary>
         /// <param name="tagName">Name of the tag.</param>
         /// <param name="renderMode">The render mode.</param>
-        public HtmlTagBuilder(string tagName, TagRenderMode renderMode)
+        public HtmlTagBuilder(string tagName, TagRenderMode renderMode = TagRenderMode.Normal)
         {
             InternalBuilder = new TagBuilder(tagName);
             RenderMode = renderMode;
@@ -45,11 +43,7 @@ namespace Build.Mvc.Html
         /// <summary>
         /// Gets or sets the HtmlHelper
         /// </summary>
-        public virtual HtmlHelper Html
-        {
-            get { return _html; }
-            set { _html = HtmlHelperContext.MergeHelperContext(value, this); }
-        }
+        public virtual HtmlHelper Html { get; set; }
 
         public TagBuilder InternalBuilder { get; private set; }
 

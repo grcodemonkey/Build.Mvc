@@ -13,15 +13,15 @@
 // It is pitch black. You are likely to be eaten by a grue.
 // 
 
+using System;
+using System.Threading;
+using System.Web.Mvc;
+using System.Web.Mvc.Html;
+using System.Web.Routing;
+using Build.Mvc.Helpers;
+
 namespace Build.Mvc.Html
 {
-    using System.Threading;
-    using System.Web.Mvc;
-    using System.Web.Mvc.Html;
-    using System.Web.Routing;
-
-    using Build.Mvc.Helpers;
-
     /// <summary>
     /// A Html Builder for creating &lt;form&gt; tags.
     /// </summary>
@@ -30,31 +30,32 @@ namespace Build.Mvc.Html
         private RouteValueDictionary _routeValues;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="MvcFormBuilder" /> class.
+        /// Initializes a new instance of the <see cref="MvcFormBuilder"/> class.
         /// </summary>
         public MvcFormBuilder()
         {
-            this.Prop("FormMethod", System.Web.Mvc.FormMethod.Post);
+            this.Prop("FormMethod", FormMethod.Post);
             this.IncludeImplicitMvcValues(true);
+            this.DefaultAttr("role", "form");
         }
 
         /// <summary>
-        ///     Gets or sets the form method.
+        /// Gets or sets the form method.
         /// </summary>
         /// <value>
-        ///     The form method.
+        /// The form method.
         /// </value>
-        public virtual System.Web.Mvc.FormMethod FormMethod
+        public virtual FormMethod FormMethod
         {
-            get { return this.Prop<System.Web.Mvc.FormMethod>("FormMethod"); }
+            get { return this.Prop<FormMethod>("FormMethod"); }
             set { this.Prop("FormMethod", value); }
         }
 
         /// <summary>
-        ///     Gets or sets the route values.
+        /// Gets or sets the route values.
         /// </summary>
         /// <value>
-        ///     The route values.
+        /// The route values.
         /// </value>
         public virtual RouteValueDictionary RouteValues
         {
@@ -62,9 +63,23 @@ namespace Build.Mvc.Html
             set { _routeValues = value; }
         }
 
-        public virtual MvcForm Begin()
+        public virtual MvcForm Begin(FormRenderStyle style = FormRenderStyle.Default)
         {
-            return BuildHelpers.FormHelper(Html, DetermineFormAction(), FormMethod, HtmlAttributes);
+            Html.UpdateFormBuilderContext(x => x.FormRenderStyle = style);
+
+            switch (style)
+            {
+                case FormRenderStyle.Inline:
+                    this.AddClass("form-inline");
+                    break;
+                case FormRenderStyle.Horizontal:
+                    this.AddClass("form-horizontal");
+                    break;
+            }
+
+            BuildHelpers.FormHelper(Html, DetermineFormAction(), FormMethod, HtmlAttributes);
+
+            return new BuildMvcForm(Html, Html.ViewContext);
         }
 
         public override string ToHtmlString()
@@ -76,19 +91,45 @@ namespace Build.Mvc.Html
         protected virtual string DetermineFormAction()
         {
             string formAction = this.Attr("action");
-            if ( string.IsNullOrEmpty(formAction) )
+            if (string.IsNullOrEmpty(formAction))
             {
-                string routeName = this.RouteName();
-                if ( !string.IsNullOrEmpty(routeName) || RouteValues.Count > 0 )
-                {
-                    formAction = UrlHelper.GenerateUrl(routeName, null, null, RouteValues, Html.RouteCollection, Html.ViewContext.RequestContext, this.IncludeImplicitMvcValues());
-                }
-                else
-                {
-                    formAction = Html.ViewContext.HttpContext.Request.RawUrl;
-                }
+                formAction = GetFormActionFromContext();
             }
             return formAction;
+        }
+
+        private string GetFormActionFromContext()
+        {
+            string routeName = this.RouteName();
+
+            string formAction;
+
+            if (!string.IsNullOrEmpty(routeName) || RouteValues.Count > 0)
+            {
+                formAction = UrlHelper.GenerateUrl(routeName, null, null, RouteValues, Html.RouteCollection, Html.ViewContext.RequestContext, this.IncludeImplicitMvcValues());
+            }
+            else
+            {
+                formAction = Html.ViewContext.HttpContext.Request.RawUrl;
+            }
+
+            return formAction;
+        }
+
+        private class BuildMvcForm : MvcForm
+        {
+            public BuildMvcForm(HtmlHelper htmlHelper, ViewContext viewContext) : base(viewContext)
+            {
+                Html = htmlHelper;
+            }
+
+            private HtmlHelper Html { get; set; }
+
+            protected override void Dispose(bool disposing)
+            {
+                Html.SetFormBuilderContext(null);
+                base.Dispose(disposing);
+            }
         }
     }
 }

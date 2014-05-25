@@ -13,15 +13,15 @@
 // It is pitch black. You are likely to be eaten by a grue.
 // 
 
-namespace Build.Mvc.Html
-{
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Web.Mvc;
-    using System.Web.Routing;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Web.Mvc;
+using System.Web.Routing;
 
+namespace Build.Mvc.Html.Extras
+{
     /// <summary>
     /// 
     /// </summary>

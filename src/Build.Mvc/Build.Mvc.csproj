@@ -9,17 +9,16 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Build.Mvc</RootNamespace>
-    <AssemblyName>Build.Mvc4</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <AssemblyName>Build.Mvc5</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>build.mvc.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>pubkey.snk</AssemblyOriginatorKeyFile>
     <SccProjectName>%24/buildmvc/Build.Mvc</SccProjectName>
     <SccLocalPath>.</SccLocalPath>
     <SccAuxPath>https://tfs.codeplex.com/tfs/tfs15</SccAuxPath>
     <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,6 +28,7 @@
     <ErrorReport>prompt</ErrorReport>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,6 +37,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>1591</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -46,30 +47,30 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.1.2\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.1.2\lib\net45\System.Web.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Routing" />
-    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -79,20 +80,26 @@
     <Compile Include="-\JetBrains\Annotations\AspMvcAnnotations.cs" />
     <Compile Include="Extensions\GrammerExtensions.cs" />
     <Compile Include="Helpers\BuildHelpers.cs" />
+    <Compile Include="Helpers\LabelHelper.cs" />
+    <Compile Include="Helpers\SelectListHelper.cs" />
     <Compile Include="Helpers\SurroundWithTemplateHelper.cs" />
     <Compile Include="Helpers\TextBoxBuilderHelper.cs" />
     <Compile Include="HtmlWriter.cs" />
     <Compile Include="Html\Constants\AriaAttribute.cs" />
     <Compile Include="Extensions\ExtensionsForEnum.cs" />
+    <Compile Include="Html\Constants\FormRenderStyle.cs" />
     <Compile Include="Html\Constants\NgBinding.cs" />
     <Compile Include="Html\Extensions\BuilderExtensions.cs" />
     <Compile Include="Html\Extensions\ExtensionsForIContentEditableAttributeBuilder.cs" />
-    <Compile Include="Html\Extensions\DataBindExtensions.cs" />
+    <Compile Include="Html\Extras\DataBindExtensions.cs" />
     <Compile Include="Extensions\HtmlStringExtensions.cs" />
     <Compile Include="Html\Extensions\ExtensionsForIListSelectListItem.cs" />
     <Compile Include="Html\Extensions\ExtensionsForIValidationMessageBuilder.cs" />
     <Compile Include="Html\Extensions\ExtensionsForIValidationSummaryBuilder.cs" />
-    <Compile Include="Html\Extensions\NgExtensions.cs" />
+    <Compile Include="Html\Extras\NgExtensions.cs" />
+    <Compile Include="Html\FormBuilderContext.cs" />
+    <Compile Include="Html\HorizontalFormSizing.cs" />
+    <Compile Include="Html\IHorizontalFormSizing.cs" />
     <Compile Include="Interfaces\IBtnBuilder.cs" />
     <Compile Include="Interfaces\ISpellCheckBuilder.cs" />
     <Compile Include="Interfaces\IMultipleAttributeBuilder.cs" />
@@ -100,8 +107,6 @@
     <Compile Include="Interfaces\IAutocompleteAttributeBuilder.cs" />
     <Compile Include="Html\Extensions\ExtensionsForIMultipleAttributeBuilder.cs" />
     <Compile Include="Html\Extensions\ExtensionsForIHtmlTagBuilder.cs" />
-    <Compile Include="HtmlHelperContext.cs" />
-    <Compile Include="HtmlHelperContextExtensions.cs" />
     <Compile Include="Helpers\ExtensionsForHtmlHelper.cs" />
     <Compile Include="Html\ButtonBuilder.cs" />
     <Compile Include="Html\Extensions\ButtonExtensions.cs" />
@@ -141,7 +146,6 @@
     <Compile Include="Html\Constants\ContentEditableOption.cs" />
     <Compile Include="Html\Constants\DraggableMode.cs" />
     <Compile Include="Html\Constants\FormEncType.cs" />
-    <Compile Include="Html\Constants\FormMethod.cs" />
     <Compile Include="Html\Constants\IconName.cs" />
     <Compile Include="Html\Constants\IconPosition.cs" />
     <Compile Include="Html\Constants\InputType.cs" />
@@ -199,22 +203,15 @@
     <Compile Include="Html\Extensions\ExtensionsForISpellCheckBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="build.mvc.pfx" />
+    <None Include="Build.Mvc.csproj.DotSettings" />
+    <None Include="Build.Mvc.nuspec" />
     <None Include="packages.config" />
+    <None Include="pubkey.snk" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="build.mvc.png" />
-    <Content Include="License.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <None Include="build.mvc.png" />
+    <None Include="License.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="CopyOutputToPublishFolder" AfterTargets="build">
-    <PropertyGroup>
-      <publishFolder>$(SolutionDir)publish/Mvc4/</publishFolder>
-    </PropertyGroup>
-    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(publishFolder)lib/" />
-  </Target>
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>

@@ -35,8 +35,7 @@ namespace Build.Mvc
         {
             get
             {
-                return LazyInitializer.EnsureInitialized(ref _htmlAttributes,
-                                                         () => new SortedDictionary<string, object>(StringComparer.CurrentCultureIgnoreCase));
+                return LazyInitializer.EnsureInitialized(ref _htmlAttributes, () => new SortedDictionary<string, object>(StringComparer.CurrentCultureIgnoreCase));
             }
         }
 

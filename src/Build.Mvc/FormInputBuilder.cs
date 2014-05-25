@@ -13,38 +13,28 @@
 // It is pitch black. You are likely to be eaten by a grue.
 // 
 
+using System;
+using System.Linq.Expressions;
+using System.Web.Mvc;
+
 namespace Build.Mvc
 {
-    using System;
-    using System.Linq.Expressions;
-    using System.Web.Mvc;
-
     /// <summary>
     /// An abstract class for all HtmlBuilders that create HTML form markup.
     /// </summary>
-    /// <typeparam name="TModel">The type of the model.</typeparam>
-    /// <typeparam name="TProperty">The type of the property.</typeparam>
+    /// <typeparam name="TModel"> The type of the model. </typeparam>
+    /// <typeparam name="TProperty"> The type of the property. </typeparam>
     public abstract class FormInputBuilder<TModel, TProperty> : FormInputBuilder, IHtmlHelper<TModel>
     {
-        private HtmlHelper<TModel> _html;
-
         /// <summary>
-        ///     Gets or sets the init expression.
+        /// Gets or sets the init expression.
         /// </summary>
         public Expression<Func<TModel, TProperty>> InitExpression { get; set; }
 
         /// <summary>
-        ///     Gets or sets the HtmlHelper
+        /// Gets or sets the HtmlHelper
         /// </summary>
-        public new HtmlHelper<TModel> Html
-        {
-            get { return _html; }
-            set
-            {
-                _html = HtmlHelperContext.MergeHelperContext(value, this);
-                base.Html = _html;
-            }
-        }
+        public new HtmlHelper<TModel> Html { get; set; }
     }
 
     /// <summary>
@@ -52,15 +42,9 @@ namespace Build.Mvc
     /// </summary>
     public abstract class FormInputBuilder : HtmlBuilder, IFormInputBuilder, IHtmlHelper
     {
-        private HtmlHelper _html;
-
         /// <summary>
-        ///     Gets or sets the HtmlHelper
+        /// Gets or sets the HtmlHelper
         /// </summary>
-        public virtual HtmlHelper Html
-        {
-            get { return _html; }
-            set { _html = HtmlHelperContext.MergeHelperContext(value, this); }
-        }
+        public virtual HtmlHelper Html { get; set; }
     }
 }

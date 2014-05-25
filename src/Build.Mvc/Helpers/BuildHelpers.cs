@@ -1,5 +1,6 @@
 ﻿namespace Build.Mvc.Helpers
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
@@ -18,14 +19,14 @@
                                                 IDictionary<string, object> htmlAttributes)
         {
             string str = labelText ?? (metadata.DisplayName ?? (metadata.PropertyName ?? htmlFieldName.Split(new[] {'.'}).Last()));
-            if ( string.IsNullOrEmpty(str) )
+            if ( String.IsNullOrEmpty(str) )
             {
                 return MvcHtmlString.Empty;
             }
             var tagBuilder = new TagBuilder("label") {InnerHtml = html.Encode(str)};
             tagBuilder.Attributes.Add("for", TagBuilder.CreateSanitizedId(html.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(htmlFieldName)));
             tagBuilder.MergeAttributes(htmlAttributes, true);
-            return tagBuilder.ToMvcHtmlString();
+            return tagBuilder.ToMvcHtmlString(TagRenderMode.Normal);
         }
 
         /// <summary>

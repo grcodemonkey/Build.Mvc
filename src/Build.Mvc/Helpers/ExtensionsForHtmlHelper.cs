@@ -13,22 +13,94 @@
 // It is pitch black. You are likely to be eaten by a grue.
 // 
 
+using System;
+using System.Globalization;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Web.Mvc;
+using Build.Mvc.Html;
+
 namespace Build.Mvc.Helpers
 {
-    using System.Web.Mvc;
-
     /// <summary>
     /// </summary>
     public static class ExtensionsForHtmlHelper
     {
         /// <summary>
-        /// Gets an instance of a <see cref="T:System.Web.Mvc.UrlHelper" /> for the current RequestContext.
+        /// Gets an instance of a <see cref="T:System.Web.Mvc.UrlHelper"/> for the current RequestContext.
         /// </summary>
-        /// <param name="htmlHelper">The HTML helper.</param>
-        /// <returns></returns>
-        public static UrlHelper Url(this HtmlHelper htmlHelper)
+        /// <param name="html"> The HTML helper. </param>
+        /// <returns> </returns>
+        public static UrlHelper Url(this HtmlHelper html)
         {
-            return new UrlHelper(htmlHelper.ViewContext.RequestContext);
+            return new UrlHelper(html.ViewContext.RequestContext);
+        }
+
+        public static object GetModelStateValue(this HtmlHelper html, string key, Type destinationType)
+        {
+            ModelState modelState;
+            if (html.ViewData.ModelState.TryGetValue(key, out modelState) && modelState.Value != null)
+            {
+                return modelState.Value.ConvertTo(destinationType, null);
+            }
+            return null;
+        }
+
+        public static object GetInputValue<TModel, TProperty>(this HtmlHelper<TModel> html, IFormInputBuilder inputBuilder, Expression<Func<TModel, TProperty>> expression)
+        {
+            ModelMetadata metadata = ModelMetadata.FromLambdaExpression(expression, html.ViewData);
+            return GetInputValue(html, inputBuilder, ExpressionHelper.GetExpressionText(expression), metadata.Model);
+        }
+
+        public static object GetInputValue(this HtmlHelper html, IFormInputBuilder inputBuilder, string name, object value, bool useViewData = false)
+        {
+            if (inputBuilder.InstanceData.ContainsKey("value"))
+            {
+                return inputBuilder.Val();
+            }
+
+            if (useViewData && value == null)
+            {
+                value = Convert.ToString(html.ViewData.Eval(name), CultureInfo.CurrentCulture);
+            }
+
+            string fullHtmlFieldName = html.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(name);
+            object attemptedValue = html.GetModelStateValue(fullHtmlFieldName, typeof(string));
+
+            return attemptedValue ?? value;
+        }
+
+        public static string GetLabelText(this HtmlHelper html, string expression, string labelText)
+        {
+            return GetLabelText(ModelMetadata.FromStringExpression(expression, html.ViewData), expression, labelText);
+        }
+
+        public static string GetLabelText<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, string labelText)
+        {
+            return GetLabelText(ModelMetadata.FromLambdaExpression(expression, html.ViewData), ExpressionHelper.GetExpressionText(expression), labelText);
+        }
+
+        private static string GetLabelText(
+            ModelMetadata metadata,
+            string htmlFieldName,
+            string labelText = null)
+        {
+            string str = labelText;
+            if (str != null)
+            {
+                return str;
+            }
+            string displayName = metadata.DisplayName;
+            if (displayName == null)
+            {
+                string propertyName = metadata.PropertyName;
+                str = propertyName ?? htmlFieldName.Split(new[] { '.' }).Last();
+            }
+            else
+            {
+                str = displayName;
+            }
+            return str;
         }
     }
 }

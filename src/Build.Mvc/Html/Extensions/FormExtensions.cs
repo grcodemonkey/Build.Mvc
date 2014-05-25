@@ -14,19 +14,22 @@
 // 
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Routing;
+using JetBrains.Annotations;
 
 namespace Build.Mvc.Html
 {
     public static class FormExtensions
     {
+        #region BuildForm
 
         public static IMvcFormBuilder BuildForm(this HtmlHelper htmlHelper,
             Action<IMvcFormBuilder> builderExpression)
         {
-            var builder = htmlHelper.BuildForm();
+            IMvcFormBuilder builder = htmlHelper.BuildForm();
             if (builderExpression != null)
             {
                 builderExpression.Invoke(builder);
@@ -40,203 +43,250 @@ namespace Build.Mvc.Html
         }
 
         public static IMvcFormBuilder BuildForm(this HtmlHelper htmlHelper,
-                                                object routeValues)
+            object routeValues)
         {
-            return htmlHelper.BuildForm(null, null, new RouteValueDictionary(routeValues), System.Web.Mvc.FormMethod.Post, new RouteValueDictionary());
+            return htmlHelper.BuildForm(null, null, new RouteValueDictionary(routeValues), FormMethod.Post, new RouteValueDictionary());
         }
 
         public static IMvcFormBuilder BuildForm(this HtmlHelper htmlHelper,
-                                                RouteValueDictionary routeValues)
+            RouteValueDictionary routeValues)
         {
-            return htmlHelper.BuildForm(null, null, routeValues, System.Web.Mvc.FormMethod.Post, new RouteValueDictionary());
+            return htmlHelper.BuildForm(null, null, routeValues, FormMethod.Post, new RouteValueDictionary());
         }
 
         /// <summary>
         /// Builds the form.
         /// </summary>
-        /// <param name="htmlHelper">The HTML helper.</param>
-        /// <param name="actionName">Name of the action.</param>
-        /// <returns></returns>
+        /// <param name="htmlHelper"> The HTML helper. </param>
+        /// <param name="actionName"> Name of the action. </param>
+        /// <returns> </returns>
         public static IMvcFormBuilder BuildForm(this HtmlHelper htmlHelper,
-                                                string actionName)
+            string actionName)
         {
             return htmlHelper.BuildForm(actionName, null);
         }
 
         public static IMvcFormBuilder BuildForm(this HtmlHelper htmlHelper,
-                                                string actionName,
-                                                string controllerName)
+            string actionName,
+            string controllerName)
         {
-            return htmlHelper.BuildForm(actionName, controllerName, new RouteValueDictionary(), System.Web.Mvc.FormMethod.Post, new RouteValueDictionary());
+            return htmlHelper.BuildForm(actionName, controllerName, new RouteValueDictionary(), FormMethod.Post, new RouteValueDictionary());
         }
 
         public static IMvcFormBuilder BuildForm(this HtmlHelper htmlHelper,
-                                                string actionName,
-                                                string controllerName,
-                                                object routeValues)
+            [AspMvcAction] string actionName,
+            [AspMvcController] string controllerName,
+            object routeValues)
         {
-            return htmlHelper.BuildForm(actionName, controllerName, new RouteValueDictionary(routeValues), System.Web.Mvc.FormMethod.Post, new RouteValueDictionary());
+            return htmlHelper.BuildForm(actionName, controllerName, new RouteValueDictionary(routeValues), FormMethod.Post, new RouteValueDictionary());
         }
 
         public static IMvcFormBuilder BuildForm(this HtmlHelper htmlHelper,
-                                                string actionName,
-                                                string controllerName,
-                                                System.Web.Mvc.FormMethod method)
+            [AspMvcAction] string actionName,
+            [AspMvcController] string controllerName,
+            FormMethod method)
         {
             return htmlHelper.BuildForm(actionName, controllerName, new RouteValueDictionary(), method, new RouteValueDictionary());
         }
 
         public static IMvcFormBuilder BuildForm(this HtmlHelper htmlHelper,
-                                                string actionName,
-                                                string controllerName,
-                                                RouteValueDictionary routeValues)
+            [AspMvcAction] string actionName,
+            [AspMvcController] string controllerName,
+            RouteValueDictionary routeValues)
         {
-            return htmlHelper.BuildForm(actionName, controllerName, routeValues, System.Web.Mvc.FormMethod.Post, new RouteValueDictionary());
+            return htmlHelper.BuildForm(actionName, controllerName, routeValues, FormMethod.Post, new RouteValueDictionary());
         }
 
         public static IMvcFormBuilder BuildForm(this HtmlHelper htmlHelper,
-                                                string actionName,
-                                                string controllerName,
-                                                object routeValues,
-                                                System.Web.Mvc.FormMethod method)
+            [AspMvcAction] string actionName,
+            [AspMvcController] string controllerName,
+            object routeValues,
+            FormMethod method)
         {
             return htmlHelper.BuildForm(actionName, controllerName, new RouteValueDictionary(routeValues), method, new RouteValueDictionary());
         }
 
         public static IMvcFormBuilder BuildForm(this HtmlHelper htmlHelper,
-                                                string actionName,
-                                                string controllerName,
-                                                System.Web.Mvc.FormMethod method,
-                                                IDictionary<string, object> htmlAttributes)
+            [AspMvcAction] string actionName,
+            [AspMvcController] string controllerName,
+            FormMethod method,
+            IDictionary<string, object> htmlAttributes)
         {
             return htmlHelper.BuildForm(actionName, controllerName, new RouteValueDictionary(), method, htmlAttributes);
         }
 
         public static IMvcFormBuilder BuildForm(this HtmlHelper htmlHelper,
-                                                string actionName,
-                                                string controllerName,
-                                                System.Web.Mvc.FormMethod method,
-                                                object htmlAttributes)
+            [AspMvcAction] string actionName,
+            [AspMvcController] string controllerName,
+            FormMethod method,
+            object htmlAttributes)
         {
             return htmlHelper.BuildForm(actionName, controllerName, new RouteValueDictionary(), method, HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
         }
 
         public static IMvcFormBuilder BuildForm(this HtmlHelper htmlHelper,
-                                                string actionName,
-                                                string controllerName,
-                                                RouteValueDictionary routeValues,
-                                                System.Web.Mvc.FormMethod method)
+            [AspMvcAction] string actionName,
+            [AspMvcController] string controllerName,
+            RouteValueDictionary routeValues,
+            FormMethod method)
         {
             return htmlHelper.BuildForm(actionName, controllerName, routeValues, method, new RouteValueDictionary());
         }
 
         public static IMvcFormBuilder BuildForm(this HtmlHelper htmlHelper,
-                                                string actionName,
-                                                string controllerName,
-                                                object routeValues,
-                                                System.Web.Mvc.FormMethod method,
-                                                object htmlAttributes)
+            [AspMvcAction] string actionName,
+            [AspMvcController] string controllerName,
+            object routeValues,
+            FormMethod method,
+            object htmlAttributes)
         {
             return htmlHelper.BuildForm(actionName, controllerName, new RouteValueDictionary(routeValues), method, HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
         }
 
         public static IMvcFormBuilder BuildForm(this HtmlHelper htmlHelper,
-                                                string actionName,
-                                                string controllerName,
-                                                RouteValueDictionary routeValues,
-                                                System.Web.Mvc.FormMethod method,
-                                                IDictionary<string, object> htmlAttributes)
+            [AspMvcAction] string actionName,
+            [AspMvcController] string controllerName,
+            RouteValueDictionary routeValues,
+            FormMethod method,
+            IDictionary<string, object> htmlAttributes)
         {
             return new MvcFormBuilder {Html = htmlHelper, RouteValues = routeValues, FormMethod = method}.ActionName(actionName).ControllerName(controllerName).Attr(htmlAttributes);
         }
 
+        #endregion
+
+        #region BuildRouteForm
+
         public static IMvcFormBuilder BuildRouteForm(this HtmlHelper htmlHelper,
-                                                     object routeValues)
+            object routeValues)
         {
-            return htmlHelper.BuildRouteForm(null, new RouteValueDictionary(routeValues), System.Web.Mvc.FormMethod.Post, new RouteValueDictionary());
+            return htmlHelper.BuildRouteForm(null, new RouteValueDictionary(routeValues), FormMethod.Post, new RouteValueDictionary());
         }
 
         public static IMvcFormBuilder BuildRouteForm(this HtmlHelper htmlHelper,
-                                                     string routeName)
+            string routeName)
         {
-            return htmlHelper.BuildRouteForm(routeName, new RouteValueDictionary(), System.Web.Mvc.FormMethod.Post, new RouteValueDictionary());
+            return htmlHelper.BuildRouteForm(routeName, new RouteValueDictionary(), FormMethod.Post, new RouteValueDictionary());
         }
 
         public static IMvcFormBuilder BuildRouteForm(this HtmlHelper htmlHelper,
-                                                     RouteValueDictionary routeValues)
+            RouteValueDictionary routeValues)
         {
-            return htmlHelper.BuildRouteForm(null, routeValues, System.Web.Mvc.FormMethod.Post, new RouteValueDictionary());
+            return htmlHelper.BuildRouteForm(null, routeValues, FormMethod.Post, new RouteValueDictionary());
         }
 
         public static IMvcFormBuilder BuildRouteForm(this HtmlHelper htmlHelper,
-                                                     string routeName,
-                                                     object routeValues)
+            string routeName,
+            object routeValues)
         {
-            return htmlHelper.BuildRouteForm(routeName, new RouteValueDictionary(routeValues), System.Web.Mvc.FormMethod.Post, new RouteValueDictionary());
+            return htmlHelper.BuildRouteForm(routeName, new RouteValueDictionary(routeValues), FormMethod.Post, new RouteValueDictionary());
         }
 
         public static IMvcFormBuilder BuildRouteForm(this HtmlHelper htmlHelper,
-                                                     string routeName,
-                                                     System.Web.Mvc.FormMethod method)
+            string routeName,
+            FormMethod method)
         {
             return htmlHelper.BuildRouteForm(routeName, new RouteValueDictionary(), method, new RouteValueDictionary());
         }
 
         public static IMvcFormBuilder BuildRouteForm(this HtmlHelper htmlHelper,
-                                                     string routeName,
-                                                     RouteValueDictionary routeValues)
+            string routeName,
+            RouteValueDictionary routeValues)
         {
-            return htmlHelper.BuildRouteForm(routeName, routeValues, System.Web.Mvc.FormMethod.Post, new RouteValueDictionary());
+            return htmlHelper.BuildRouteForm(routeName, routeValues, FormMethod.Post, new RouteValueDictionary());
         }
 
         public static IMvcFormBuilder BuildRouteForm(this HtmlHelper htmlHelper,
-                                                     string routeName,
-                                                     object routeValues,
-                                                     System.Web.Mvc.FormMethod method)
+            string routeName,
+            object routeValues,
+            FormMethod method)
         {
             return htmlHelper.BuildRouteForm(routeName, new RouteValueDictionary(routeValues), method, new RouteValueDictionary());
         }
 
         public static IMvcFormBuilder BuildRouteForm(this HtmlHelper htmlHelper,
-                                                     string routeName,
-                                                     System.Web.Mvc.FormMethod method,
-                                                     IDictionary<string, object> htmlAttributes)
+            string routeName,
+            FormMethod method,
+            IDictionary<string, object> htmlAttributes)
         {
             return htmlHelper.BuildRouteForm(routeName, new RouteValueDictionary(), method, htmlAttributes);
         }
 
         public static IMvcFormBuilder BuildRouteForm(this HtmlHelper htmlHelper,
-                                                     string routeName,
-                                                     System.Web.Mvc.FormMethod method,
-                                                     object htmlAttributes)
+            string routeName,
+            FormMethod method,
+            object htmlAttributes)
         {
             return htmlHelper.BuildRouteForm(routeName, new RouteValueDictionary(), method, HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
         }
 
         public static IMvcFormBuilder BuildRouteForm(this HtmlHelper htmlHelper,
-                                                     string routeName,
-                                                     RouteValueDictionary routeValues,
-                                                     System.Web.Mvc.FormMethod method)
+            string routeName,
+            RouteValueDictionary routeValues,
+            FormMethod method)
         {
             return htmlHelper.BuildRouteForm(routeName, routeValues, method, new RouteValueDictionary());
         }
 
         public static IMvcFormBuilder BuildRouteForm(this HtmlHelper htmlHelper,
-                                                     string routeName,
-                                                     object routeValues,
-                                                     System.Web.Mvc.FormMethod method,
-                                                     object htmlAttributes)
+            string routeName,
+            object routeValues,
+            FormMethod method,
+            object htmlAttributes)
         {
             return htmlHelper.BuildRouteForm(routeName, new RouteValueDictionary(routeValues), method, HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
         }
 
         public static IMvcFormBuilder BuildRouteForm(this HtmlHelper htmlHelper,
-                                                     string routeName,
-                                                     RouteValueDictionary routeValues,
-                                                     System.Web.Mvc.FormMethod method,
-                                                     IDictionary<string, object> htmlAttributes)
+            string routeName,
+            RouteValueDictionary routeValues,
+            FormMethod method,
+            IDictionary<string, object> htmlAttributes)
         {
-            return new MvcFormBuilder { Html = htmlHelper, RouteValues = routeValues, FormMethod = method }.RouteName(routeName).Attr(htmlAttributes).IncludeImplicitMvcValues(false);
+            return new MvcFormBuilder {Html = htmlHelper, RouteValues = routeValues, FormMethod = method}.RouteName(routeName).Attr(htmlAttributes).IncludeImplicitMvcValues(false);
         }
+
+        #endregion
+
+        #region FormBuilderContext
+
+        private const string FormBuilderContextKey = "__build.mvc__FormBuilderContext";
+
+        public static void SetFormBuilderContext(this HtmlHelper htmlHelper, FormBuilderContext builderContext)
+        {
+            htmlHelper.ViewContext.HttpContext.Items[FormBuilderContextKey] = builderContext;
+        }
+
+        public static void UpdateFormBuilderContext(this HtmlHelper htmlHelper, Action<FormBuilderContext> updateAction)
+        {
+            if (updateAction == null)
+            {
+                return;
+            }
+            FormBuilderContext formBuilderContext = htmlHelper.GetFormBuilderContext();
+            updateAction(formBuilderContext);
+            htmlHelper.SetFormBuilderContext(formBuilderContext);
+        }
+
+        public static FormBuilderContext GetFormBuilderContext(this HtmlHelper htmlHelper)
+        {
+            IDictionary items = htmlHelper.ViewContext.HttpContext.Items;
+
+            FormBuilderContext builderContext = null;
+            if (items.Contains(FormBuilderContextKey))
+            {
+                builderContext = items[FormBuilderContextKey] as FormBuilderContext;
+            }
+
+            if (builderContext == null)
+            {
+                builderContext = new FormBuilderContext();
+                items[FormBuilderContextKey] = builderContext;
+            }
+
+            return builderContext;
+        }
+
+        #endregion
     }
 }

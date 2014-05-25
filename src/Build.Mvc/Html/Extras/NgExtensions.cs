@@ -1,4 +1,4 @@
-﻿namespace Build.Mvc.Html
+﻿namespace Build.Mvc.Html.Extras
 {
     /// <summary>
     /// Extensions for Angular.js

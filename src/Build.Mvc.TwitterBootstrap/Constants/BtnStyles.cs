@@ -17,9 +17,7 @@ namespace Build.Mvc.TwitterBootstrap
 		Disabled	= 0x100,
 		Small		= 0x200,
 		Large		= 0x400,
-		Mini		= 0x800,
-		Block		= 0x1000,
-		[Obsolete("This class is not available in Twitter.Bootstrap version 3+", false)]
-		Inverse		= 0x2000
+		Xs		    = 0x800,
+		Block		= 0x1000
 	}
 }

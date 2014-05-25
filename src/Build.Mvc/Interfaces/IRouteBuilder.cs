@@ -13,12 +13,11 @@
 // It is pitch black. You are likely to be eaten by a grue.
 // 
 
+using System.Web.Routing;
+
 namespace Build.Mvc
 {
-    using System.Web.Routing;
-
     /// <summary>
-    /// 
     /// </summary>
     public interface IRouteBuilder : IInstanceData
     {
