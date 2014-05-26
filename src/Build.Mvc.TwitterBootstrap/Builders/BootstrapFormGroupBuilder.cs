@@ -76,6 +76,13 @@ namespace Build.Mvc.TwitterBootstrap
 
             writer.Write(Config.RenderControl(display));
 
+            FormBuilderContext builderContext = Html.GetFormBuilderContext();
+
+            if (builderContext.RenderValidationMessages)
+            {
+                writer.Write(Config.RenderValidationMessage());
+            }
+
             if (shouldRenderControlSizeDiv)
             {
                 writer.RenderEndTag(); // div

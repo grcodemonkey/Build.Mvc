@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <version>$version$</version>
-    <id>Build.Mvc.TwiterBootstrap</id>
+    <id>Build.Mvc.TwitterBootstrap</id>
     <title>Build.Mvc addon for TwitterBootstrap</title>
     <authors>grcodemonkey</authors>
     <owners>Jeremy Bell</owners>

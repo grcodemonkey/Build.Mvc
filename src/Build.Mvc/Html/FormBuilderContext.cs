@@ -34,5 +34,7 @@ namespace Build.Mvc.Html
             get { return HorizontalFormSizing.ColOffset; }
             set { HorizontalFormSizing.ColOffset = value; }
         }
+
+        public bool RenderValidationMessages { get; set; }
     }
 }

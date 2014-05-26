@@ -2,6 +2,7 @@
 using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Mvc.Html;
 using Build.Mvc.Html;
 using Build.Mvc.TwitterBootstrap.Helpers;
 
@@ -30,6 +31,11 @@ namespace Build.Mvc.TwitterBootstrap
                 AddClass("control-label").
                 AddClassWhen(!string.IsNullOrEmpty(LabelSize), LabelSize).
                 BuildWith(LabelModifier);
+        }
+
+        public override IHtmlString RenderValidationMessage()
+        {
+            return Html.BuildValidationMessageFor(InitExpression);
         }
     }
 
@@ -72,6 +78,11 @@ namespace Build.Mvc.TwitterBootstrap
                 AddClass("control-label").
                 AddClassWhen(!string.IsNullOrEmpty(LabelSize), LabelSize).
                 BuildWith(LabelModifier);
+        }
+
+        public virtual IHtmlString RenderValidationMessage()
+        {
+            return Html.BuildValidationMessage(InitExpression);
         }
     }
 }
