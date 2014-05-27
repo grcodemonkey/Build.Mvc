@@ -3,7 +3,7 @@
 
 Build.Mvc is a helper extensions method library that turns the standard ASP .NET MVC HtmlHelper methods into jQuery-style chainable methods that allow you to expressively add markup and style to your MVC application.
 
-Build.Mvc is available on [NuGet](https://www.nuget.org/packages?q=Build.Mvc)
+**Build.Mvc is available on [NuGet](https://www.nuget.org/packages?q=Build.Mvc)**
 
 
 ### Reference and Example Apps ###
