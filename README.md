@@ -7,7 +7,7 @@ Build.Mvc is a helper extensions method library that turns the standard ASP .NET
 
 ## Build.Mvc let's you change this:
 
-```
+```C#
 @if (Model.DateOfBirth.HasValue)
 { 
     @Html.TextBoxFor(m => m.DateOfBirth, String.Format("{0:d}", Model.DateOfBirth) ,new { @class = "ui-datepicker span11", @style = "display:block;float:left;" })
@@ -19,7 +19,7 @@ else
 ```
 
 ## Into this:
-```
+```C#
 @Html.BuildTextBoxFor(m => m.DateOfBirth, string.Format("{0:d}", Model.DateOfBirth)).BuildWith(
     b => b.AddClass("ui-datepicker", "span11").
         Css("display", "block").
