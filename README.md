@@ -31,6 +31,8 @@ else
 ```
 
 
+View the project on [CodePlex](https://buildmvc.codeplex.com/documentation) for more complete documentation.
+
 ### Reference and Example Apps ###
 
 1. [SocialGoal](https://github.com/grcodemonkey/SocialGoal) is a MVC 5, EF6 Reference App
