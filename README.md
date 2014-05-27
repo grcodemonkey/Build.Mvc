@@ -5,6 +5,31 @@ Build.Mvc is a helper extensions method library that turns the standard ASP .NET
 
 **Build.Mvc is available on [NuGet](https://www.nuget.org/packages?q=Build.Mvc)**
 
+## Build.Mvc let's you change this:
+
+```
+@if (Model.DateOfBirth.HasValue)
+{ 
+    @Html.TextBoxFor(m => m.DateOfBirth, String.Format("{0:d}", Model.DateOfBirth) ,new { @class = "ui-datepicker span11", @style = "display:block;float:left;" })
+}
+else
+{ 
+    @Html.TextBoxFor(m => m.DateOfBirth, new { @value = "", @class = "ui-datepicker span11", @style = "display:block;float:left;" ,@readonly="readonly"})
+}
+```
+
+## Into this:
+```
+@Html.BuildTextBoxFor(m => m.DateOfBirth, string.Format("{0:d}", Model.DateOfBirth)).BuildWith(
+    b => b.AddClass("ui-datepicker", "span11").
+        Css("display", "block").
+        Css("float", "left").
+        BuildWhen(Model.DateOfBirth == null, t =>
+            t.Attr("value", "").
+              Attr("readonly", "readonly")
+        ))
+```
+
 
 ### Reference and Example Apps ###
 
